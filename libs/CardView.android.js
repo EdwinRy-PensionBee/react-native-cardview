@@ -35,7 +35,8 @@ class CardView extends Component {
           <View
             style={{
               paddingRight,
-              paddingBottom
+              paddingBottom,
+              flex: 1,
             }}
           >
             {this.props.children}
