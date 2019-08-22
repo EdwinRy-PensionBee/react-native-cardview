@@ -12,6 +12,7 @@ var iface = {
     cornerRadius: PropTypes.number,
     cardElevation: PropTypes.number,
     cardMaxElevation: PropTypes.number,
+    apiLower21PaddingViewStyle: View.propTypes,
     ...View.propTypes // include the default view properties
   }
 };
@@ -20,7 +21,7 @@ const RNCardView = requireNativeComponent('RNCardView', iface);
 class CardView extends Component {
   render() {
     if (Platform.Version < 21) {
-      const { cardMaxElevation = 1, cornerRadius = 1 } = this.props;
+      const { cardMaxElevation = 1, cornerRadius = 1, apiLower21PaddingViewStyle } = this.props;
       const maxCardElevationPx = PixelRatio.getPixelSizeForLayoutSize(
         cardMaxElevation
       );
@@ -36,7 +37,7 @@ class CardView extends Component {
             style={{
               paddingRight,
               paddingBottom,
-              flex: 1,
+              ...apiLower21PaddingViewStyle
             }}
           >
             {this.props.children}
